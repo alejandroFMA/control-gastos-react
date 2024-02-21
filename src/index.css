@@ -59,7 +59,7 @@ header h1 {
 .formulario {
   width: 95%;
   margin: 0 auto;
-  padding: 10rem 0;
+  padding: 10rem 3rem;
 }
 @media (min-width: 768px) {
   .formulario {

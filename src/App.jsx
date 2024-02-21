@@ -7,7 +7,11 @@ import ListadoGastos from "./components/ListadoGastos";
 
 
 function App() {
-  const [presupuesto, setPresupuesto] = useState(0);
+  const [presupuesto, setPresupuesto] = useState(
+    
+    Number(localStorage.getItem("presupuesto")) ?? 0
+
+  );
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false);
   const [modal, setModal] = useState(false);
   const [animarModal, setAnimarModal] = useState(false);
@@ -25,10 +29,29 @@ if (Object.keys(gastoEditar).length > 0){
   
 }, [gastoEditar])
 
+useEffect(()=>{
+
+  Number(localStorage.setItem("presupuesto", presupuesto) ?? 0)
+
+}, [presupuesto])
+
+useEffect(()=>{
+
+const presupuestoLS = Number(localStorage.getItem("presupuesto")) ?? 0
+
+if (presupuestoLS>0){
+
+  setIsValidPresupuesto(true)
+}
+
+}, [])
+
+
 
   const handleNuevoGasto = () => {
 
     setModal(true);
+    setGastoEditar({})
     setTimeout(() => {
       setAnimarModal(true);
     }, 500);
@@ -39,7 +62,6 @@ if (Object.keys(gastoEditar).length > 0){
     if(gasto.id){
       const gastoActualizado = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState )
       setGastos(gastoActualizado)
-      setGastoEditar({})
     } else {
       gasto.id= generarId();
       gasto.fecha = Date.now();
@@ -51,6 +73,11 @@ if (Object.keys(gastoEditar).length > 0){
       setModal(false);
     }, 500);
   };
+
+  const eliminarGasto = (id) =>{
+    const gastosActualizados = gastos.filter(gasto => gasto.id !== id) 
+    setGastos(gastosActualizados)
+  }
 
   return (
     <>
@@ -68,7 +95,8 @@ if (Object.keys(gastoEditar).length > 0){
         <ListadoGastos 
         gastos={gastos}
         gastoEditar={gastoEditar}
-        setGastoEditar={setGastoEditar}/>
+        setGastoEditar={setGastoEditar}
+        eliminarGasto={eliminarGasto}/>
         </main>
         <div className="nuevo-gasto">
           <img

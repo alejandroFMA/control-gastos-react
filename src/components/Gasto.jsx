@@ -20,7 +20,7 @@ import IconoSalud from "../img/icono_salud.svg";
 import IconoSeguros from "../img/icono_seguros.svg";
 import IconoSuscripcion from "../img/icono_suscripciones.svg";
 
-function Gasto({ gasto, setGastoEditar }) {
+function Gasto({ gasto, setGastoEditar, eliminarGasto }) {
   const { nombre, cantidad, categoria, id, fecha } = gasto;
 
   const diccionarioIconos = {
@@ -43,7 +43,8 @@ function Gasto({ gasto, setGastoEditar }) {
 
   const trailingActions = () => (
     <TrailingActions>
-      <SwipeAction onClick={() => console.log("borrar")}>Borrar</SwipeAction>
+      <SwipeAction onClick={() => eliminarGasto(id)}
+      destructive={true}>Borrar</SwipeAction>
     </TrailingActions>
   );
 

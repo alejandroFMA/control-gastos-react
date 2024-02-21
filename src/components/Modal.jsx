@@ -34,7 +34,6 @@ const Modal = ({
     setTimeout(() => {
       setModal(false);
     }, 500);
-    setGastoEditar({})
   };
 
   const handleSubmit = (e) => {

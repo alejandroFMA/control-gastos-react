@@ -93,7 +93,7 @@ header h1 {
 
 @media (min-width: 300px) {
   .formulario .campo {
-    justify-content: center;
+    justify-content: center; 
 
   }
 }

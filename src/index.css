@@ -355,13 +355,32 @@ main {
 .modal .cerrar-modal {
   position: absolute;
   right: 3rem;
-  top: 3rem;
+  top: 1rem;
   width: 3rem;
   height: 3rem;
 }
 .modal .cerrar-modal img {
   width: 100%;
   cursor: pointer;
+}
+@media (max-width: 500px) {
+  .cerrar-modal {
+    position: fixed; 
+    top: 1rem; 
+    right: 1rem; 
+    z-index: 1001; 
+    width: 4rem;
+    height: 4rem; 
+  }
+
+  .cerrar-modal img {
+    width: 100%; 
+    height: auto; 
+  }
+
+  .campofiltro{
+display: flex;
+flex-direction: column;  }
 }
 
 .modal .formulario {

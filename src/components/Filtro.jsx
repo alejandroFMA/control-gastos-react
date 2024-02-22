@@ -10,7 +10,7 @@ function Filtro({filtro, setFiltro}) {
 
         <form>
 
-            <div className='campo'>
+            <div className='campo campofiltro'>
 
             <label> Filtrar gastos</label>
             <select

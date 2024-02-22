@@ -53,6 +53,7 @@ const Modal = ({
 
   return (
     <div className="modal">
+      
       <div className="cerrar-modal">
         <img src={cerrar} alt="icono cerrar" onClick={ocultarModal} />
       </div>

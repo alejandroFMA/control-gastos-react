@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { formatearCantidad } from "../helpers";
+import Swal from 'sweetalert2'
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
@@ -30,15 +31,41 @@ const ControlPresupuesto = ({
   }, [gastos]);
 
   const handleReset = () => {
-    const resultado = confirm(
-      "¿Deseas reiniciar la aplicación? Se perderán todos los datos guardados"
-    );
-    if (resultado) {
-      setGastos([])
-      setPresupuesto(0);
-      setIsValidPresupuesto(false);
+
+    Swal.fire({
+      title: "¿Deseas reiniciar la aplicación? ",
+      text: " Se perderán todos los datos guardados",
+      icon: "warning",
+      width: 600,
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, reiniciar",
+      cancelButtonText:"Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "¡Reiniciado!",
+          text: "Tus datos fueron borrados.",
+          icon: "success"
+        });
+        setGastos([])
+        setPresupuesto(0);
+        setIsValidPresupuesto(false);
+        
+      }
+    });
+
+
+    // const resultado = confirm(
+    //   "¿Deseas reiniciar la aplicación? Se perderán todos los datos guardados"
+    // );
+    // if (resultado) {
+    //   setGastos([])
+    //   setPresupuesto(0);
+    //   setIsValidPresupuesto(false);
       
-    }
+    // }
   };
 
   return (

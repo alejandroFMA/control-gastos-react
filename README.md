@@ -27,7 +27,7 @@ npm start
 ```
 
 
-####Uso
+#### Uso
 
 - Introduce tu presupuesto inicial en la pantalla de inicio.
 - Añade gastos indicando el nombre, la cantidad y seleccionando una categoría.
